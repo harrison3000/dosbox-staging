@@ -19,7 +19,6 @@ tests_SOURCES = \
 	fifo.cpp \
 	fs_utils.cpp \
 	log_msg_knockout.cpp \
-	myfifo.cpp \
 	readerwritercircularbuffer.cpp \
 	setup.cpp \
 	soft_limiter.cpp \
