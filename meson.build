@@ -278,11 +278,14 @@ configure_file(input : 'src/config.h.in', output : 'config.h',
 
 # tests
 #
-# Some tests use relative paths; in meson 0.56.0 this can be replaced
-# with meson.project_source_root().
-project_source_root = meson.current_source_dir()
-subdir('tests')
-
+wants_tests = get_option('tests').enabled()
+is_debug_build = get_option('buildtype').startswith('debug') 
+if wants_tests or (is_debug_build and get_option('tests').auto())
+  # Some tests use relative paths; in meson 0.56.0 this can be replaced
+  # with meson.project_source_root().
+  project_source_root = meson.current_source_dir()
+  subdir('tests')
+endif
 
 # dosbox executable
 #
